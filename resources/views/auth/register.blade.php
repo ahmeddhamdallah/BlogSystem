@@ -26,14 +26,14 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('National_id') }}</label>
+                            <label for="national_id" class="col-md-4 col-form-label text-md-right">{{ __('National_id') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
+                                <input id="national_id" type="text" class="form-control{{ $errors->has('national_id') ? ' is-invalid' : '' }}" name="national_id" value="{{ old('national_id') }}" required>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('national_id'))
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('national_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

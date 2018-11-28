@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+use App\Tag;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +17,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+         Schema::defaultStringLength(191);
+
+        if (Schema::hasTable('tags'))
+        {
+            $minutes=100;
+            $tags = Cache::remember('tags', $minutes, function () {
+                    return Tag::all();
+                });
+            View::share('tags',$tags);
+        }
     }
 
     /**
